@@ -1,10 +1,15 @@
 import React from "react";
+import logo from "../images/logo.svg"
 
 class Navbar extends React.Component {
   render() {
     return (
       <div>
-        {/* <a href={logo} alt="Logo"></a> */}
+        <a href={logo} alt="Logo">
+					<img src={logo} alt="Logo" />
+					<span className="font-weight-light" >Platzi</span>
+					<span className="font-weight-light" >Conf</span>
+				</a>
       </div>
     );
   }
