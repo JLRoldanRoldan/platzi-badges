@@ -4,7 +4,7 @@ class Navbar extends React.Component {
   render() {
     return (
       <div>
-       8 <a href={logo} alt="Logo"></a>
+        {/* <a href={logo} alt="Logo"></a> */}
       </div>
     );
   }
