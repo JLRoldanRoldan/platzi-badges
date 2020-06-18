@@ -5,15 +5,39 @@ import confLogo from "../images/badge-header.svg";
 import "../components/styles/Badges.css";
 import BadgeList from "../components/BadgesList";
 
+import api from "../api";
+
 class Badges extends React.Component {
   state = {
     loading: true,
     error: null,
-    date: undefine,
+    date: undefined,
+  };
+
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData = async () => {
+    this.setState({ loading: true, error: null });
+
+    try {
+      const data = await api.badges.list();
+      this.setState({ loading: false, data: data });
+    } catch (error) {
+      this.setState({ loading: false, error: error });
+    }
   };
 
   render() {
-    console.log("2/4. render()");
+    if (this.state.loading === true) {
+      return "Loading...";
+    }
+
+    if (this.state.error) {
+      return `Error: ${this.state.error.message}`;
+    }
+
     return (
       <React.Fragment>
         <div className="Badges">
